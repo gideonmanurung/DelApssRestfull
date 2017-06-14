@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+    </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IT Del</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/description/all">Description</a></li>
+            <li><a href="/activity/all">Activity</a></li>
+            <li><a href="/facility/all">Facility</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class="container">
+    
+    <h2>Deskripsi IT Del</h2>
+    <div th:if="${not #lists.isEmpty(descriptions)}">
+    	<div th:each="description : ${descriptions}">
+    		<div>
+    			<img th:src="${'static/images/description/'+description.image}"/>
+    			<label th:text="${description.nameDescription}"></label><br></br>
+    			<p th:text="${description.explanation}"></p>
+    			<a th:href="${'/description/edit/'+description.idDescription}">Edit<span class="glyphicon glyphicon-edit"></span></a>
+    			<a th:href="${'/description/delete/'+description.idDescription}">Delete<span class="glyphicon glyphicon-remove"></span></a>
+    		</div>
+    	</div>
+    </div>
+
+	<div>
+		<a class= "btn btn-default" href="/description/addDescription">Tambah Deskripsi Baru</a>
+	</div>
+	</div>
+
+    
+     <script th:src="@{/js/jquery.min.js}"></script>
+    
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    
+     <script th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
+  
+  </body>
+</html>
